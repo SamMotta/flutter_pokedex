@@ -46,8 +46,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   TextButton(
                     style: const ButtonStyle(
-                      backgroundColor:
-                          MaterialStatePropertyAll<Color>(Colors.deepPurple),
+                      backgroundColor: MaterialStatePropertyAll<Color>(Colors.deepPurple),
                     ),
                     onPressed: () async {
                       pokemons = await pokeApi.getPreviousPokemons();
@@ -63,8 +62,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   TextButton(
                     style: const ButtonStyle(
-                      backgroundColor:
-                          MaterialStatePropertyAll<Color>(Colors.deepPurple),
+                      backgroundColor: MaterialStatePropertyAll<Color>(Colors.deepPurple),
                     ),
                     onPressed: () async {
                       pokemons = await pokeApi.getNextPokemons();
@@ -89,22 +87,19 @@ class _HomePageState extends State<HomePage> {
                     var pokemon = pokemons[index];
 
                     return Card(
-                      color: Color(PokemonTypesColors.hexCodes[
-                          (pokemon.types[0]['type'] as Map)['name']]!),
+                      color: Color(PokemonTypesColors.hexCodes[pokemon.types![0].type!.name]!),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         child: Row(
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      _capitalize(pokemon.name),
+                                      _capitalize(pokemon.name!),
                                       style: const TextStyle(
                                         fontSize: 24,
                                         color: Colors.white,
@@ -115,10 +110,9 @@ class _HomePageState extends State<HomePage> {
                                 Row(
                                   children: [
                                     Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        for (var type in pokemon.types)
+                                        for (var type in pokemon.types!)
                                           Container(
                                             decoration: BoxDecoration(
                                               boxShadow: const [
@@ -128,19 +122,14 @@ class _HomePageState extends State<HomePage> {
                                                   spreadRadius: -1,
                                                 ),
                                               ],
-                                              borderRadius:
-                                                  BorderRadius.circular(6),
+                                              borderRadius: BorderRadius.circular(6),
                                               color: Color(
-                                                  PokemonTypesColors.hexCodes[
-                                                      (type['type']
-                                                          as Map)['name']]!),
+                                                  PokemonTypesColors.hexCodes[type.type!.name]!),
                                             ),
                                             padding: const EdgeInsets.all(8),
-                                            margin:
-                                                const EdgeInsets.only(top: 6),
+                                            margin: const EdgeInsets.only(top: 6),
                                             child: Text(
-                                              _capitalize((type['type']
-                                                  as Map)['name']),
+                                              _capitalize(type.type!.name!),
                                               style: const TextStyle(
                                                 fontSize: 18,
                                                 color: Colors.white,
@@ -171,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   FadeInImage.memoryNetwork(
                                     placeholder: kTransparentImage,
-                                    image: pokemon.sprite,
+                                    image: pokemon.sprites!.other!.officialArtwork!.frontDefault!,
                                     height: 128,
                                   ),
                                 ],
@@ -184,85 +173,6 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
               ),
-
-              // for (var pokemon in pokemons)
-              // Card(
-              //   color: Color(PokemonTypesColors
-              //       .hexCodes[(pokemon.types[0]['type'] as Map)['name']]!),
-              //   child: Padding(
-              //     padding:
-              //         const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              //     child: Row(
-              //       children: [
-              //         Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Row(
-              //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //               children: [
-              //                 Text(
-              //                   _capitalize(pokemon.name),
-              //                   style: const TextStyle(
-              //                     fontSize: 24,
-              //                     color: Colors.white,
-              //                   ),
-              //                 ),
-              //               ],
-              //             ),
-              //             Row(
-              //               children: [
-              //                 Column(
-              //                   crossAxisAlignment: CrossAxisAlignment.start,
-              //                   children: [
-              //                     for (var type in pokemon.types)
-              //                       Container(
-              //                         decoration: BoxDecoration(
-              //                           boxShadow: const [
-              //                             BoxShadow(
-              //                               blurRadius: 6,
-              //                               color: Colors.black,
-              //                               spreadRadius: -1,
-              //                             ),
-              //                           ],
-              //                           borderRadius:
-              //                               BorderRadius.circular(6),
-              //                           color: Color(PokemonTypesColors
-              //                                   .hexCodes[
-              //                               (type['type'] as Map)['name']]!),
-              //                         ),
-              //                         padding: const EdgeInsets.all(8),
-              //                         margin: const EdgeInsets.only(top: 6),
-              //                         child: Text(
-              //                           _capitalize(
-              //                               (type['type'] as Map)['name']),
-              //                           style: const TextStyle(
-              //                             fontSize: 18,
-              //                             color: Colors.white,
-              //                           ),
-              //                         ),
-              //                       ),
-              //                   ],
-              //                 ),
-              //               ],
-              //             ),
-              //           ],
-              //         ),
-              //         Expanded(
-              //           child: Column(
-              //             crossAxisAlignment: CrossAxisAlignment.end,
-              //             children: [
-              //               FadeInImage.memoryNetwork(
-              //                 placeholder: kTransparentImage,
-              //                 image: pokemon.sprite,
-              //                 height: 128,
-              //               ),
-              //             ],
-              //           ),
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
