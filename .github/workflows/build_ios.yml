@@ -19,8 +19,8 @@ jobs:
       with:
         flutter-version: '3.7.7'
     - run: flutter pub get
-    - run: flutter build ios --release --no-codesign
+    - run: flutter build ipa --release --no-codesign
     - uses: actions/upload-artifact@v3
       with:
         name: ios-build
-        path: build/ios/iphoneos
+        path: build/ios/ipa
