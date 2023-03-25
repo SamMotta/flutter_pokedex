@@ -23,4 +23,4 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: ios-build
-        path: build/ios/ipa
+        path: build/ios/
