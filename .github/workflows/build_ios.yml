@@ -17,6 +17,6 @@ jobs:
         architecture: x64
     - run: flutter pub get
     - run: flutter build ios --release --no-codesign
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v3
       with:
         path: build/app/outputs/ipa/release/*.ipa
