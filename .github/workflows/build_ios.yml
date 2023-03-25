@@ -19,4 +19,5 @@ jobs:
     - run: flutter build ios --release --no-codesign
     - uses: actions/upload-artifact@v3
       with:
-        path: build/ios/ipa/*.ipa
+        name: ios-build
+        path: build/ios/iphoneos
